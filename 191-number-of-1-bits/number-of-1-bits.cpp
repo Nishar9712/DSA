@@ -3,12 +3,11 @@ public:
     int hammingWeight(int n) {
         
         int count = 0;
-        int temp = n;
+       
+        while(n!=0){
+            if(n % 2 == 1) count++;
 
-        while(temp!=0){
-            if(temp % 2 == 1) count++;
-
-            temp/=2;
+            n/=2;
         }
 
         return count;
