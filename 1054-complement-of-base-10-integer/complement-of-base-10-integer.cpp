@@ -18,7 +18,7 @@ public:
            i++;
            n/=2;
         }
-
+        
         return ans;
     }
 };
