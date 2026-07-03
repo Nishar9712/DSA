@@ -9,6 +9,7 @@ public:
 
         while(x!=0){
             digit = x % 10;
+            x/=10;
 
             if (ans > INT_MAX / 10 || (ans == INT_MAX / 10 && digit > 7)) return 0;
 
@@ -16,7 +17,6 @@ public:
 
             ans = ans * 10 + digit;
         
-            x/=10;
         }
 
         
