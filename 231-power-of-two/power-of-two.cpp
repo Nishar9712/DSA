@@ -3,6 +3,7 @@ public:
     bool isPowerOfTwo(int n) {
         bool ans = false;
         int a = 1;
+        
         for(int i=0; i<=30; i++){
             
             if (a == n) ans = true;
