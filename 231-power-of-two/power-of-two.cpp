@@ -2,10 +2,10 @@ class Solution {
 public:
     bool isPowerOfTwo(int n) {
 
-        if (n<=0) return false;
+        // if (n<=0) return false;
+        // return ( (n & (n-1)) == 0);
 
-        return ( (n & (n-1)) == 0);
-        /*
+      
         bool ans = false;
         int a = 1;
 
@@ -16,8 +16,8 @@ public:
             if (a < INT_MAX/2) 
                 a *=2;
         }
-        return ans;
-        */
 
+        return ans;
+    
     }
 };
