@@ -4,7 +4,8 @@ public:
         
         int ans = 0 , i = 0;
 
-        if(n==0) return 1;
+        //Edge case
+        if(n==0) return 1; 
 
         while(n!=0){
            int bit = n & 1;
