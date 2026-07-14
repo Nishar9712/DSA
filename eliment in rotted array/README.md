@@ -1,41 +1,214 @@
-﻿# Element in Rotated Array
+# Search in a Rotated Sorted Array (C++)
 
-This repository contains a C++ solution for finding an element in a rotated sorted array.
+## Overview
 
-## Problem
+This C++ program searches for a target element in a **rotated sorted array**.
 
-Given a rotated sorted array, the goal is to find the index of a target value using an efficient algorithm.
+The algorithm works in two steps:
 
-## Approach
+1. Find the pivot (the index of the smallest element).
+2. Perform Binary Search on the correct half of the array.
 
-- Find the pivot point where the array rotation occurs.
-- Use binary search on the correct subarray.
-- Return the index of the target element or `-1` if it is not found.
+This approach has an overall time complexity of **O(log n)**.
 
-## Files
+---
 
-- `eliment in rotted array.cpp` — C++ implementation using pivot search and binary search.
-- `README.md` — this file.
+## Algorithm
+
+### Step 1: Find the Pivot
+
+The `Pivot()` function uses Binary Search to locate the smallest element in the rotated sorted array.
+
+Example:
+
+Array:
+```
+3 7 8 1 2 3
+```
+
+Pivot Index:
+```
+3
+```
+
+Pivot Element:
+```
+1
+```
+
+---
+
+### Step 2: Binary Search
+
+After finding the pivot:
+
+- If the target lies between the pivot element and the last element, search in the right half.
+- Otherwise, search in the left half.
+
+---
+
+## Functions
+
+### `Pivot(int arr[], int n)`
+
+Finds the index of the smallest element in the rotated sorted array.
+
+**Parameters**
+
+- `arr[]` : Rotated sorted array
+- `n` : Size of array
+
+**Returns**
+
+- Pivot index
+
+---
+
+### `binarySearch(int arr[], int start, int end, int k)`
+
+Performs Binary Search on a sorted portion of the array.
+
+**Parameters**
+
+- `arr[]` : Array
+- `start` : Starting index
+- `end` : Ending index
+- `k` : Target element
+
+**Returns**
+
+- Index of target if found
+- `-1` if not found
+
+---
 
 ## Example
 
-With the sample input array:
+### Input Array
 
-```text
-[3, 7, 8, 1, 2, 3]
+```cpp
+int arr[] = {3, 7, 8, 1, 2, 3};
 ```
 
-Searching for `2` will return index `4`.
+Target
 
-## Build and Run
-
-```powershell
-cd "c:\_Skills\DSA-1\eliment in rotted array"
-g++ "eliment in rotted array.cpp" -o "eliment in rotted array.exe"
-./"eliment in rotted array.exe"
+```cpp
+2
 ```
 
-## Notes
+### Output
 
-- The current implementation uses a hard-coded sample array and target value.
-- Update the array and `k` value in the source file to test other cases.
+```
+4
+```
+
+---
+
+## Time Complexity
+
+| Operation | Complexity |
+|-----------|------------|
+| Finding Pivot | O(log n) |
+| Binary Search | O(log n) |
+| Overall | **O(log n)** |
+
+---
+
+## Space Complexity
+
+```
+O(1)
+```
+
+No extra data structures are used.
+
+---
+
+## How to Compile
+
+Using **g++**
+
+```bash
+g++ main.cpp -o main
+```
+
+Run
+
+```bash
+./main
+```
+
+Windows
+
+```bash
+g++ main.cpp -o main.exe
+main.exe
+```
+
+---
+
+## Code Structure
+
+```
+main.cpp
+│
+├── Pivot()
+│      Finds the rotation point
+│
+├── binarySearch()
+│      Searches for the target element
+│
+└── main()
+       Initializes the array
+       Finds pivot
+       Searches the target
+       Prints the index
+```
+
+---
+
+## Sample Execution
+
+```
+Array:
+3 7 8 1 2 3
+
+Target:
+2
+
+Pivot Index:
+3
+
+Element Found At Index:
+4
+```
+
+---
+
+## Note
+
+In the following condition:
+
+```cpp
+if(k >= arr[pivot] & k <= arr[end])
+```
+
+replace the bitwise AND operator (`&`) with the logical AND operator (`&&`):
+
+```cpp
+if (k >= arr[pivot] && k <= arr[end])
+```
+
+Using `&&` is the correct choice for logical comparisons and avoids unintended behavior.
+
+---
+
+## Author
+
+**Language:** C++
+
+**Concepts Used:**
+- Binary Search
+- Rotated Sorted Array
+- Divide and Conquer
+- Time Complexity Optimization
