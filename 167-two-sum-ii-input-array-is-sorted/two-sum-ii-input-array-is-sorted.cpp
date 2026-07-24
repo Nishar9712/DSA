@@ -18,6 +18,6 @@ public:
             else left++;
         }
 
-        return ans;
+        return {-1, -1};
     }
 };
