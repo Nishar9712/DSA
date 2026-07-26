@@ -5,33 +5,37 @@ public:
 
         vector<vector<int>> ans = {};
 
-        for(int i=0; i<= size(nums)-3; i++){
-            if (i!= 0 && nums[i] == nums[i-1]) continue;
-            int left = i+1;
-            int right = size(nums)-1;
+        for(int i=0; i <= size(nums) - 3; i++){
 
-            while(left<right){
-                if(i == left && i == right && left == right) continue;
+            if (i > 0 && nums[i] == nums[i-1]) continue;
+            if(nums[i] > 0) break;
 
-                if(left != i+1 && nums[left] == nums[left-1]){
-                    left++;
+            int j = i+1;
+            int k = size(nums)-1;
+
+            while(j < k){
+
+                if(i == j && i == k && j == k) continue;
+
+                if(j != i+1 && nums[j] == nums[j-1]){
+                    j++;
                     continue;
                 }
 
-                if(right != size(nums)-1 && nums[right] == nums[right+1]){
-                    right--;
+                if(k != size(nums)-1 && nums[k] == nums[k+1]){
+                    k--;
                     continue;
                 }
 
-                int sum = nums[i] + nums[left] + nums[right];
+                int sum = nums[i] + nums[j] + nums[k];
 
                 if(sum == 0){
-                    ans.insert(ans.end(), {nums[i], nums[left], nums[right]});
-                    left++;
-                    right--;
+                    ans.insert(ans.end(), {nums[i], nums[j], nums[k]});
+                    j++;
+                    k--;
                 }
-                else if(sum<0) left++;
-                else right--;
+                else if(sum<0) j++;
+                else k--;
             }
         }
 
